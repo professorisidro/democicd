@@ -1,0 +1,54 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+  
+name: Java CI with Maven
+
+on:
+  push:
+    branches: master
+  
+jobs:
+  build: 
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B clean package --file pom.xml
+      
+    - name: SCP Files
+      # You may pin to the exact commit or the version.
+      # uses: appleboy/scp-action@b476d5806f2a4c1ed5902a87fa91b0623cac7258
+      uses: appleboy/scp-action@v0.0.1       
+      with:
+        host: ${{ secrets.HOSTNAME }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "target/democicd-0.0.1-SNAPSHOT.jar"
+      
+    - name: SSH Remote Commands
+      # You may pin to the exact commit or the version.
+      # uses: appleboy/ssh-action@1d1b21ca96111b1eb4c03c21c14ebb971d2200f6
+      uses: appleboy/ssh-action@v0.1.4
+      with:
+        # ssh host
+        host: ${{secrets.HOSTNAME}}
+        # ssh port
+        port: 22
+        # ssh username
+        username: ${{secrets.USERNAME}}
+        # ssh password
+        password: ${{secrets.PASSWORD}}
+        # script
+        script: deploy.sh
+    
+      
