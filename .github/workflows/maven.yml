@@ -25,7 +25,7 @@ jobs:
       run: mvn -B package --file pom.xml
       
     - name: Listing all generated files
-      run: ls -la 
+      run: ls -la target/
       
     - name: SCP Files
       # You may pin to the exact commit or the version.
@@ -36,7 +36,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: "./target/democicd-0.0.1-SNAPSHOT.jar"
+        source: "target/democicd-0.0.1-SNAPSHOT.jar"
+	target: "democicd-0.0.1-SNAPSHOT.jar"
       
     - name: SSH Remote Commands
       # You may pin to the exact commit or the version.
