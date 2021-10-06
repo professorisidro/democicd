@@ -23,6 +23,7 @@ jobs:
       
     - name: Listing all generated files
       run: ls -la target/
+           pwd 
       
     - name: SCP Files
       # You may pin to the exact commit or the version.
@@ -33,7 +34,7 @@ jobs:
          port: 22
          username: root
          password: ${{ secrets.PASSWORD }}
-         localDir: target/democicd-0.0.1-SNAPSHOT.jar
+         localFile: target
          remoteDir: /root/
     
       
