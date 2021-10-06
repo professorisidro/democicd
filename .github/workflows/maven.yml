@@ -27,13 +27,20 @@ jobs:
     - name: SCP Files
       # You may pin to the exact commit or the version.
       # uses: appleboy/scp-action@b476d5806f2a4c1ed5902a87fa91b0623cac7258
-      uses: wangyucode/sftp-upload-action@v1.1
+      #uses: wangyucode/sftp-upload-action@v1.1
+      #with:
+      #   host: cloud.professorisidro.com.br
+      #   port: 22
+      #   username: root
+      #   password: ${{ secrets.PASSWORD }}
+      #   localFile: target
+      #   remoteDir: /root/
+      uses: appleboy/scp-action@master
       with:
          host: cloud.professorisidro.com.br
          port: 22
          username: root
          password: ${{ secrets.PASSWORD }}
-         localFile: target
-         remoteDir: /root/
-    
+         source: "./target/*.jar"
+         target: "/root/democicd/"
       
