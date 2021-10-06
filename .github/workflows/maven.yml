@@ -29,11 +29,12 @@ jobs:
       # uses: appleboy/scp-action@b476d5806f2a4c1ed5902a87fa91b0623cac7258
       uses: appleboy/scp-action@v0.0.1       
       with:
-        host: "cloud.professorisidro.com.br"
-        username: "root"
-        password: "*Pr0f3ss0r12"
+        host: cloud.professorisidro.com.br
+        username: root
+        password: ${{ secrets.PASSWORD }}
         port: 22
         source: "target/democicd-0.0.1-SNAPSHOT.jar"
+        target: "/root/"
 
     
       
