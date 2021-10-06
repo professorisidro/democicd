@@ -37,8 +37,8 @@ jobs:
         password: *Pr0f3ss0r12
         port: 22
         source: "target/democicd-0.0.1-SNAPSHOT.jar"
-	target: "democicd-0.0.1-SNAPSHOT.jar"
-      
+        target: "/root/"
+
     - name: SSH Remote Commands
       # You may pin to the exact commit or the version.
       # uses: appleboy/ssh-action@1d1b21ca96111b1eb4c03c21c14ebb971d2200f6
