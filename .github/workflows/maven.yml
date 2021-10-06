@@ -32,10 +32,10 @@ jobs:
       # uses: appleboy/scp-action@b476d5806f2a4c1ed5902a87fa91b0623cac7258
       uses: appleboy/scp-action@v0.0.1       
       with:
-        host: ${{ secrets.HOSTNAME }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+        host: cloud.professorisidro.com.br
+        username: root
+        password: *Pr0f3ss0r12
+        port: 22
         source: "target/democicd-0.0.1-SNAPSHOT.jar"
 	target: "democicd-0.0.1-SNAPSHOT.jar"
       
@@ -45,13 +45,13 @@ jobs:
       uses: appleboy/ssh-action@v0.1.4
       with:
         # ssh host
-        host: ${{secrets.HOSTNAME}}
+        host: cloud.professorisidro.com.br
         # ssh port
         port: 22
         # ssh username
-        username: ${{secrets.USERNAME}}
+        username: root
         # ssh password
-        password: ${{secrets.PASSWORD}}
+        password: *Pr0f3ss0r12
         # script
         script: deploy.sh
     
