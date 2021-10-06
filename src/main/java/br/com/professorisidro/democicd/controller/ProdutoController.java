@@ -8,7 +8,7 @@ public class ProdutoController {
 	
 	@GetMapping("/produto")
 	public String getAllProdutos() {
-		return "Hello";
+		return "Hello World";
 	}
 
 }
